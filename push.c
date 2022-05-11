@@ -10,13 +10,13 @@ void _push(stack_t **stack, unsigned int line_number)
 {
 	int a = global;
 
-	if (a != 0)
+	if (a != -255)
 	{
 		add_nodo(stack, a);
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "L%u: unknown instruction", line_number);
+		dprintf(STDERR_FILENO, "L%u: unknown instruction\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }

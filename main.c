@@ -28,7 +28,8 @@ int main(int argc, char **argv)
 		else if (buffer[i] != ' ')
 		{
 			j = 0;
-			while (buffer[i + 1] != ' ' && buffer[i + 1] != '\n')
+			while (buffer[i + 1] != ' ' && buffer[i + 1] != '\n'
+					&& buffer[i + 1] != '\0')
 			{
 				aux[j] = buffer[i];
 				j++;
@@ -39,7 +40,12 @@ int main(int argc, char **argv)
 			if (strcmp(aux, "push") == 0)
 				i = next_word(buffer, i + 1);
 			if (belongs(aux) == 1)
+			{
 				execute(aux, &stack, line);
+				while(buffer[i] != '\n')
+					i++;
+				i--;
+			}
 		}
 		i++;
 	}
@@ -73,7 +79,15 @@ int next_word(char *buffer, unsigned int i)
 	}
 
 	aux[j] = '\0';
-	global = atoi(aux);
+	if (strcmp(aux, "0") == 0)
+		global = 0;
+	else
+	{
+		global = atoi(aux);
+		if (global == 0)
+			global = -255;
+	}
+	
 	free(aux);
 	if (buffer[i] == '\n')
 		i--;
