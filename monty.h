@@ -45,9 +45,10 @@ typedef struct instruction_s
 char *read_textfile(char *filename);
 int next_word(char *buffer, unsigned int i);
 int belongs(char *aux);
-void execute(char *aux, stack_t **stack, unsigned int line);
+int execute(char *aux, stack_t **stack, unsigned int line);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void add_nodo(stack_t **stack, int a);
-
+void erroargv(char *aux);
+void errounk(unsigned int line, char *aux);
 #endif

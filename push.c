@@ -20,7 +20,12 @@ void _push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
-
+/**
+ * add_nodo - function to push
+ * @stack: stack
+ * @a: line
+ * Return: void
+ */
 void add_nodo(stack_t **stack, int a)
 {
 	stack_t *new = malloc(sizeof(stack_t)), *aux;

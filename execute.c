@@ -3,9 +3,10 @@
  * execute - execute function that belongs to a opcode
  * @aux: opcode
  * @stack: stack
- * Return: void
+ * @line: line
+ * Return: int always 1
  */
-void execute(char *aux, stack_t **stack, unsigned int line)
+int execute(char *aux, stack_t **stack, unsigned int line)
 {
 	int i = 0;
 	instruction_t ins[] = {
@@ -20,4 +21,5 @@ void execute(char *aux, stack_t **stack, unsigned int line)
 			ins[i].f(stack, line);
 		i++;
 	}
+	return (1);
 }

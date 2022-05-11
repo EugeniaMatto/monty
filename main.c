@@ -11,25 +11,23 @@ int main(int argc, char **argv)
 
 	char *buffer, *aux = malloc(1024);
 	stack_t *stack = NULL;
-	unsigned int line = 1, i = 0, j = 0;
+	unsigned int line = 1, i = 0, j = 0, hay = 0;
 
 	if (argc != 2)
-	{
-		free(aux);
-		write(STDERR_FILENO, "USAGE: monty file\n", 18);
-		exit(EXIT_FAILURE);
-	}
-
+		erroargv(aux);
 	buffer = read_textfile(argv[1]);
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
+		{
 			line++;
-		else if (buffer[i] != ' ' && buffer[i] != 9)
+			hay = 0;
+		}
+		else if (buffer[i] != ' ')
 		{
 			j = 0;
 			while (buffer[i + 1] != ' ' && buffer[i + 1] != '\n'
-					&& buffer[i + 1] != '\0' && buffer[i + 1] != 9)
+					&& buffer[i + 1] != '\0')
 			{
 				aux[j] = buffer[i];
 				j++;
@@ -40,7 +38,9 @@ int main(int argc, char **argv)
 			if (strcmp(aux, "push") == 0)
 				i = next_word(buffer, i + 1);
 			if (belongs(aux) == 1)
-				execute(aux, &stack, line);
+				hay = execute(aux, &stack, line);
+			if (buffer[i + 1] == '\n' && hay == 0)
+				errounk(line, aux);
 		}
 		i++;
 	}
@@ -61,20 +61,15 @@ int next_word(char *buffer, unsigned int i)
 	int j = 0, flag = 0;
 
 	aux[0] = '\0';
-	while (buffer[i] != '\n' && buffer[i] && flag == 0)
+	while (buffer[i] == ' ')
+		i++;
+	while (buffer[i] != '\n' && buffer[i] && buffer[i] != ' ')
 	{
-		while (buffer[i] == ' ' || buffer[i] == 9)
-		{
-			if (aux[0])
-				flag = 1;
-			i++;
-		}	
 		aux[j] = buffer[i];
 		i++;
 		j++;
 
 	}
-
 	aux[j] = '\0';
 	if (strcmp(aux, "0") == 0)
 		global = 0;
@@ -82,7 +77,9 @@ int next_word(char *buffer, unsigned int i)
 	{
 		j = 0;
 		flag = 0;
-		while(aux[j])
+		if (aux[j] == '-')
+			j++;
+		while (aux[j])
 		{
 			if (aux[j] < '0' || aux[j] > '9')
 				flag = 1;
