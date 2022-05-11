@@ -29,6 +29,7 @@ char *read_textfile(char *filename)
 	}
 
 	lec = read(fd, buffer, 1024);
+	buffer[lec] = '\0';
 	close(fd);
 	if (lec == -1)
 	{

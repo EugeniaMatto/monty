@@ -1,27 +1,22 @@
 #include "monty.h"
+int global;
 /**
  * main - main function to create an interpreter Monty ByteCodes files
  * @argc: arg count
  * @argv: args
+ * Return: always 0
  */
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
 
 	char *buffer, *aux = malloc(1024);
+	stack_t *stack = NULL;
 	unsigned int line = 1, i = 0, j = 0;
-/*	instruction_t ins[] = {
-		{"push", _push},
-		{"pop", _pop},
-		{"pall", _pall},
-		{"pint", _pint},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop}
-	};*/
 
 	if (argc != 2)
 	{
 		free(aux);
-		write(STDERR_FILENO ,"USAGE: monty file\n", 18);
+		write(STDERR_FILENO, "USAGE: monty file\n", 18);
 		exit(EXIT_FAILURE);
 	}
 
@@ -29,13 +24,11 @@ int main(int argc, char **argv){
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-		{
 			line++;
-		}
 		else if (buffer[i] != ' ')
 		{
 			j = 0;
-			while(buffer[i + 1] != ' ' && buffer[i + 1] != '\n')
+			while (buffer[i + 1] != ' ' && buffer[i + 1] != '\n')
 			{
 				aux[j] = buffer[i];
 				j++;
@@ -43,22 +36,32 @@ int main(int argc, char **argv){
 			}
 			aux[j] = buffer[i];
 			aux[j + 1] = '\0';
-			printf("aux : %s\n", aux);
 			if (strcmp(aux, "push") == 0)
-				next_word(buffer, i + 1);
+				i = next_word(buffer, i + 1);
+			if (belongs(aux) == 1)
+				execute(aux, &stack, line);
 		}
 		i++;
 	}
+	free(buffer);
+	free(aux);
+	return (0);
 }
 
-void next_word(char *buffer, unsigned int i)
+/**
+ * next_word - function to set global variable
+ * @buffer: buffer
+ * @i: i position
+ * Return: i
+ */
+int next_word(char *buffer, unsigned int i)
 {
-	char *global, *aux = malloc(256 * sizeof(char));
+	char *aux = malloc(256 * sizeof(char));
 	int j = 0, flag = 0;
 
-	while(buffer[i] != '\n' && buffer[i])
+	while (buffer[i] != '\n' && buffer[i])
 	{
-		while(buffer[i] == ' ')
+		while (buffer[i] == ' ')
 			i++;
 		if (flag == 1)
 			break;
@@ -70,6 +73,9 @@ void next_word(char *buffer, unsigned int i)
 	}
 
 	aux[j] = '\0';
-	printf("NEXT: %s\n", aux);
+	global = atoi(aux);
 	free(aux);
+	if (buffer[i] == '\n')
+		i--;
+	return (i);
 }
