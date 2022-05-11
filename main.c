@@ -40,12 +40,7 @@ int main(int argc, char **argv)
 			if (strcmp(aux, "push") == 0)
 				i = next_word(buffer, i + 1);
 			if (belongs(aux) == 1)
-			{
 				execute(aux, &stack, line);
-				while(buffer[i] != '\n')
-					i++;
-				i--;
-			}
 		}
 		i++;
 	}
@@ -87,7 +82,6 @@ int next_word(char *buffer, unsigned int i)
 		if (global == 0)
 			global = -255;
 	}
-	
 	free(aux);
 	if (buffer[i] == '\n')
 		i--;
