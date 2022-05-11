@@ -16,7 +16,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "L%u: unknown instruction\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
