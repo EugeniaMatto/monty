@@ -10,20 +10,23 @@ global_t gl;
 
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
+	stack_t *a, *b, *c;
 
-	temp = *stack;
-	if (temp->next == NULL || !stack || !(*stack))
+	a = *stack;
+	if (a->next == NULL || !stack || !(*stack))
 	{
-		free(gl.buffer), free_list(*stack), fclose(gl.fd);
-		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
+	b = a->next;
+	c = a->next->next;
 
-	temp->prev = temp->next->next->prev;
-	temp->next->next->prev = *stack;
-	temp->next = temp->next->next;
-	temp->next->next = *stack;
-	temp->next->prev = NULL;
-	*stack = temp->next;
+	if (c)
+		c->prev = *stack;
+	b->prev = NULL;
+	a->prev = a->next;
+	a->next = b->next;
+	b->next = *stack;
+	*stack = b;
+
 }
