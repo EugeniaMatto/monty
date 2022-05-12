@@ -12,7 +12,7 @@ void _add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *aux = *stack, *aux2;
 
-	if (!(*stack) || !stack)
+	if (!(*stack) || !stack || (aux && !aux->next))
 	{
 		free(gl.buffer), free_list(*stack), fclose(gl.fd);
 		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", line_number);
