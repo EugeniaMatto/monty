@@ -2,7 +2,7 @@
 
 global_t gl;
 /**
- * _div - div the top two elements of the stack.
+ * _mod - mod of the top two elements of the stack.
  * @stack: stack head
  * @line_number: line num
  * Return: void
