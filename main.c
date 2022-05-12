@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		erroargv();
 	fd = read_textfile(argv[1]);
-	buffer= malloc(1024);
+	buffer = malloc(1024);
 	while (1)
 	{
 		gt = getline(&buffer, &l, fd);

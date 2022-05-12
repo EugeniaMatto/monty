@@ -3,8 +3,9 @@ global_t gl;
 /**
  * get_command - geT_command
  * @buffer: buffer
- * @fword: fword
  * @line: line
+ * @a: stack
+ * @fd: file descriptor
  * Return: void
  */
 void get_command(char *buffer, int line, stack_t **a, FILE *fd)

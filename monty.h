@@ -11,7 +11,7 @@
 #include <string.h>
 
 /**
- * struct global_s - global 
+ * struct global_s - global
  * @n: integer.
  * @fd: file descriptor
  * @buffer: buffer

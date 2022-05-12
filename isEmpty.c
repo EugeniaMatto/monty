@@ -7,7 +7,7 @@
 int isEmpty(char *buffer)
 {
 	int i = 0;
-	
+
 	while (buffer[i])
 	{
 		if (buffer[i] != ' ' && buffer[i] != '\t')

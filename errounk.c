@@ -8,7 +8,7 @@ void errounk(unsigned int line, char *aux)
 {
 	int i = 0;
 	
-	while(aux[i])
+	while (aux[i])
 	{
 		if (aux[i] == ' ')
 			break;
