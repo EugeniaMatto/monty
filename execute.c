@@ -12,6 +12,9 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 	instruction_t ins[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
+		{"swap", _swap},
 		{NULL, NULL}
 	};
 
