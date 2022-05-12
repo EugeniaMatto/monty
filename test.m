@@ -1,5 +1,5 @@
 push 7
-push 3
-add
+push 50
+pchar
 pall
 

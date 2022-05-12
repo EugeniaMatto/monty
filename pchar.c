@@ -1,6 +1,5 @@
 #include "monty.h"
 
-global_t gl;
 /**
  * _pint - prints the value at the top of the stack, followed by a new line.
  * @stack: stack head
@@ -10,7 +9,7 @@ global_t gl;
 
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-	if (!(*stack) || !stack)
+	if (!(*stack))
 	{
 		free(gl.buffer), free_list(*stack), fclose(gl.fd);
 		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", line_number);
