@@ -10,19 +10,15 @@ global_t gl;
 
 void _add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *aux = *stack, *aux2 = NULL;
+	stack_t *aux = *stack;
 
-	if (!(*stack) || !stack || !aux->next)
+	if (!*stack || !aux->next)
 	{
 		free(gl.buffer), free_list(*stack), fclose(gl.fd);
 		dprintf(STDERR_FILENO, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	aux2 = aux->next->next;
-
-	aux->n += aux->next->n;
-	free(aux->next);
-	aux->next = aux2;
-	if (aux2)
-		aux2->prev = aux;
+	aux = aux->next;
+	aux->n = aux->n + (*stack)->n;
+	_pop(stack, line_number);
 }

@@ -1,4 +1,4 @@
-push 4
-push 4
+push -7
+push -3
 add
 pall
