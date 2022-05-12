@@ -10,7 +10,19 @@
 #include <stdio.h>
 #include <string.h>
 
-extern int global;
+/**
+ * struct global_s - global 
+ * @n: integer.
+ * @fd: file descriptor
+ * @buffer: buffer
+ */
+typedef struct global_s
+{
+	int n;
+	FILE *fd;
+	char *buffer;
+} global_t;
+extern global_t gl;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -52,6 +64,8 @@ void _pall(stack_t **stack, unsigned int line_number);
 void add_nodo(stack_t **stack, int a);
 void erroargv(void);
 void errounk(unsigned int line, char *aux);
-void get_command(char *buffer, char *fword, int line, stack_t **a); 
+void get_command(char *buffer, int line, stack_t **a, FILE *fd);
+void free_list(stack_t *head);
+
 
 #endif

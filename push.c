@@ -1,5 +1,5 @@
 #include "monty.h"
-int global;
+global_t gl;
 /**
  * _push - function to push
  * @stack: stack
@@ -8,7 +8,7 @@ int global;
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	int a = global;
+	int a = gl.n;
 
 	if (a != -255)
 	{
@@ -16,6 +16,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
+		free(gl.buffer), free_list(*stack), fclose(gl.fd);
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}

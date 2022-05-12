@@ -1,5 +1,5 @@
 #include "monty.h"
-int global;
+global_t gl;
 /**
  * next_word - function to set global variable
  * @word: buffer
@@ -7,11 +7,11 @@ int global;
  */
 void next_word(char *word)
 {
-	int j = 0, flag = 0;
+	int j = 0, flag = 0, global;
 
 	if (!word)
 	{
-		global = -255;
+		gl.n = -255;
 		return;
 	}
 
@@ -31,4 +31,5 @@ void next_word(char *word)
 		if (global == 0 || flag == 1 || word == NULL)
 			global = -255;
 	}
+	gl.n = global;
 }

@@ -1,4 +1,5 @@
 #include "monty.h"
+int global;
 /**
  * main - main function to create an interpreter Monty ByteCodes files
  * @argc: arg count
@@ -7,7 +8,7 @@
  */
 int main(int argc, char **argv)
 {
-	char *buffer, *fword;
+	char *buffer;
 	FILE *fd;
 	int line = 0;
 	size_t l = 1024, gt = 0;
@@ -16,8 +17,7 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		erroargv();
 	fd = read_textfile(argv[1]);
-	buffer = malloc(1024);
-	fword = malloc(256);
+	buffer= malloc(1024);
 	while (1)
 	{
 		gt = getline(&buffer, &l, fd);
@@ -26,9 +26,8 @@ int main(int argc, char **argv)
 		line++;
 		buffer[gt - 1] = '\0';
 		if (isEmpty(buffer) == 0 && buffer[0] != '\0')
-			get_command(buffer, fword, line, &a);
+			get_command(buffer, line, &a, fd);
 	}
-	free(fword);
-	free(buffer);
+	free(buffer), free_list(a), fclose(fd);
 	return (0);
 }

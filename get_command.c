@@ -1,4 +1,5 @@
 #include "monty.h"
+global_t gl;
 /**
  * get_command - geT_command
  * @buffer: buffer
@@ -6,13 +7,14 @@
  * @line: line
  * Return: void
  */
-void get_command(char *buffer, char *fword, int line, stack_t **a)
+void get_command(char *buffer, int line, stack_t **a, FILE *fd)
 {
 	int pase = 0, command = 0, flag = 0;
 	char *token;
 
 	token = strtok(buffer, " \t");
-	strcpy(fword, token);
+	gl.buffer = buffer;
+	gl.fd = fd;
 	while ((token || flag == 1) && command == 0)
 	{
 		pase = 1;
@@ -34,8 +36,8 @@ void get_command(char *buffer, char *fword, int line, stack_t **a)
 	}
 	if (command == 0 && pase == 1)
 	{
-		free(buffer);
-		free(fword);
-		errounk(line, fword);
+		fclose(fd);
+		free_list(*a);
+		errounk(line, buffer);
 	}
 }
