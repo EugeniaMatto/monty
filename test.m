@@ -1,6 +1,12 @@
 push 2
-push    3 
-   push      -4    tes
+push 3
+push 4
 pall
-kk
-push 2hola
+push 6
+
+
+
+
+
+
+pall

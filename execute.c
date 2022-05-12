@@ -18,7 +18,10 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 	while (ins[i].opcode)
 	{
 		if (strcmp(aux, ins[i].opcode) == 0)
+		{
 			ins[i].f(stack, line);
+			break;
+		}
 		i++;
 	}
 	return (1);

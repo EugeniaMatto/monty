@@ -42,13 +42,16 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char *read_textfile(char *filename);
-int next_word(char *buffer, unsigned int i);
+FILE *read_textfile(char *filename);
+void next_word(char *word);
 int belongs(char *aux);
+int isEmpty(char *buffer);
 int execute(char *aux, stack_t **stack, unsigned int line);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void add_nodo(stack_t **stack, int a);
-void erroargv(char *aux);
+void erroargv(void);
 void errounk(unsigned int line, char *aux);
+void get_command(char *buffer, char *fword, int line, stack_t **a); 
+
 #endif
