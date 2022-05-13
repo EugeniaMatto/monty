@@ -23,6 +23,7 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 		{"pchar", _pchar},
 		{"rotl", _rotl},
 		{"rotr", _rotr},
+		{"pstr", _pstr},
 		{NULL, NULL}
 	};
 
