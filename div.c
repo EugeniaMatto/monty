@@ -27,7 +27,7 @@ void _div(stack_t **stack, unsigned int line_number)
 	else
 	{
 		free(gl.buffer), free_list(*stack), fclose(gl.fd);
-		dprintf(STDERR_FILENO, "L%u: can't add, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
