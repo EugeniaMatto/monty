@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * _push - function to push
+ * _rotl - function to push
  * @stack: stack
  * @line_number: line
  * Return: void
@@ -14,7 +14,7 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	{
 		i = (*stack)->n;
 		_pop(stack, line_number);
-		while(aux->next)
+		while (aux->next)
 			aux = aux->next;
 		new = malloc(sizeof(stack_t));
 		new->next = NULL;

@@ -33,7 +33,17 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 	{
 		if (strcmp(aux, ins[i].opcode) == 0)
 		{
-			ins[i].f(stack, line);
+			if (strcmp(aux, "stack") == 0 || strcmp(aux, "queue") == 0)
+			{
+				if (strcmp(aux, "stack") == 0)
+					gl.mode = 's';
+				if (strcmp(aux, "queue") == 0)
+					gl.mode = 'q';
+			}
+			else
+			{
+				ins[i].f(stack, line);
+			}
 			break;
 		}
 		i++;

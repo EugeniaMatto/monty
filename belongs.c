@@ -9,7 +9,8 @@ int belongs(char *aux)
 {
 	int r = 0, i = 0;
 	char words[][17] = {"push", "pop", "pall", "pint", "swap", "add", "nop",
-		"sub", "div", "mul", "mod", "pchar", "rotl", "rotr", "pstr", "stack", "queue"};
+		"sub", "div", "mul", "mod", "pchar", "rotl", "rotr", "pstr"
+			, "stack", "queue"};
 
 	while (i < 17)
 	{

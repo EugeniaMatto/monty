@@ -12,7 +12,10 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	if (a != -255)
 	{
-		add_nodo(stack, a);
+		if (gl.mode == 's')
+			add_nodo(stack, a);
+		else
+			add_dnodeint_end(stack, a);
 	}
 	else
 	{

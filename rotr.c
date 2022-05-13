@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * _push - function to push
+ * _rotr - function to push
  * @stack: stack
  * @line_number: line
  * Return: void
@@ -12,7 +12,7 @@ void _rotr(stack_t **stack, unsigned int line_number)
 	line_number = line_number;
 	if (*stack && stack && aux->next)
 	{
-		while(aux)
+		while (aux)
 		{
 			aux2 = aux->next;
 			auxpr = aux->prev;

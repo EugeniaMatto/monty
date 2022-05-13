@@ -1,5 +1,5 @@
 #include "monty.h"
-int global;
+global_t gl;
 /**
  * main - main function to create an interpreter Monty ByteCodes files
  * @argc: arg count
@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 	size_t l = 1024, gt = 0;
 	stack_t *a = NULL;
 
+	gl.mode = 's';
 	if (argc != 2)
 		erroargv();
 	fd = read_textfile(argv[1]);
