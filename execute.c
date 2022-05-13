@@ -24,6 +24,8 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 		{"rotl", _rotl},
 		{"rotr", _rotr},
 		{"pstr", _pstr},
+		{"stack", _rotr},
+		{"queue", _rotr},
 		{NULL, NULL}
 	};
 

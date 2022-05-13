@@ -7,10 +7,10 @@
 int belongs(char *aux)
 {
 	int r = 0, i = 0;
-	char words[][15] = {"push", "pop", "pall", "pint", "swap", "add", "nop",
-		"sub", "div", "mul", "mod", "pchar", "rotl", "rotr", "pstr"};
+	char words[][17] = {"push", "pop", "pall", "pint", "swap", "add", "nop",
+		"sub", "div", "mul", "mod", "pchar", "rotl", "rotr", "pstr", "stack", "queue"};
 
-	while (i < 15)
+	while (i < 17)
 	{
 		if (strcmp(aux, words[i]) == 0)
 			return (1);
