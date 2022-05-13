@@ -15,7 +15,7 @@ void _sub(stack_t **stack, unsigned int line_number)
 	if (aux && aux->next)
 	{
 		aux = aux->next;
-		aux->n = (*stack)->n - aux->n;
+		aux->n = aux->n - (*stack)->n;
 		_pop(stack, line_number);
 	}
 	else
