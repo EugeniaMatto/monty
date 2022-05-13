@@ -7,17 +7,19 @@
  */
 void _rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *list = NULL, *aux = *stack;
+	stack_t *aux = *stack, *aux2 = *stack, *auxpr;
 
 	line_number = line_number;
 	if (aux->next)
 	{
 		while(aux)
 		{
-			add_nodo(&list, aux->n);
-			aux = aux->next;
+			aux2 = aux->next;
+			auxpr = aux->prev;
+			aux->next = auxpr;
+			aux->prev = aux2;
+			aux = aux2;
 		}
-		free(*stack);
-		*stack = list;
+		*stack = auxpr->prev;
 	}
 }
