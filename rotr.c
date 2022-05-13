@@ -10,7 +10,7 @@ void _rotr(stack_t **stack, unsigned int line_number)
 	stack_t *aux = *stack, *aux2 = *stack, *auxpr;
 
 	line_number = line_number;
-	if (aux->next)
+	if (*stack && stack && aux->next)
 	{
 		while(aux)
 		{

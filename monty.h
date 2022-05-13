@@ -21,6 +21,7 @@ typedef struct global_s
 	int n;
 	FILE *fd;
 	char *buffer;
+	char mode;
 } global_t;
 extern global_t gl;
 

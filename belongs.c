@@ -1,4 +1,5 @@
 #include "monty.h"
+global_t gl;
 /**
  * belongs - check if aux belongs to words admited
  * @aux: word
@@ -13,7 +14,9 @@ int belongs(char *aux)
 	while (i < 17)
 	{
 		if (strcmp(aux, words[i]) == 0)
+		{
 			return (1);
+		}
 		i++;
 	}
 
