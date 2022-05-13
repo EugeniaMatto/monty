@@ -10,7 +10,7 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	stack_t *aux = *stack, *new;
 	int i;
 
-	if (aux->next)
+	if (*stack && aux->next)
 	{
 		i = (*stack)->n;
 		_pop(stack, line_number);

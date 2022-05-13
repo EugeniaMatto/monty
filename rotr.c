@@ -8,8 +8,8 @@
 void _rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *list = NULL, *aux = *stack;
-	/*int i;*/
 
+	line_number = line_number;
 	if (aux->next)
 	{
 		while(aux)
@@ -17,10 +17,7 @@ void _rotr(stack_t **stack, unsigned int line_number)
 			add_nodo(&list, aux->n);
 			aux = aux->next;
 		}
-		/*i = list->n;*/
-		printf("\n\n---list--");
-		_pall(&list, line_number);
-		printf("----\n\n");
+		free(*stack);
 		*stack = list;
 	}
 }

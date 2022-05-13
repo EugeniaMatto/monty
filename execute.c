@@ -22,6 +22,7 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 		{"mod", _mod},
 		{"pchar", _pchar},
 		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{NULL, NULL}
 	};
 

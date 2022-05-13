@@ -72,6 +72,7 @@ void _mul(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 void _pchar(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
+void _rotr(stack_t **stack, unsigned int line_number);
 void add_nodo(stack_t **stack, int a);
 void erroargv(void);
 void errounk(unsigned int line, char *aux);
